@@ -1,0 +1,16 @@
+<div id="a">Button</div>
+
+<script>
+let authwindow = {};
+
+document.querySelector("#a").addEventListener('click',(evt)=>{
+  authwindow = window.open("callback.html?client_secret=src_client_secret_XXXXX&livemode=false&source=src_XXXXXX", "threedsecure" );
+});
+
+window.addEventListener('message', (evt)=>{
+  console.log(evt.data);
+  authwindow.close();
+  console.log(JSON.parse(localStorage.getItem("threedsecurecredential")));
+}, false);
+
+</script>

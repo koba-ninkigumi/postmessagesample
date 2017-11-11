@@ -1,0 +1,16 @@
+<script>
+// First, parse the query string
+let params = {}, queryString = location.search.substring(1),
+    regex = /([^&=]+)=([^&]*)/g, m;
+while (m = regex.exec(queryString)) {
+  params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+}
+
+localStorage.setItem("threedsecurecredential", JSON.stringify({source:params['source'],client_secret:params['client_secret']}));
+
+window.addEventListener('load', (evt)=>{
+  if (window.opener && window.opener.postMessage){
+    window.opener.postMessage('callback', evt.target.origin);
+  }
+}, false);
+</script>
