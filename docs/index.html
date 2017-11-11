@@ -1,4 +1,5 @@
 <div id="a">Button</div>
+<div id="b"></div>
 
 <script>
 let authwindow = {};
@@ -11,6 +12,7 @@ window.addEventListener('message', (evt)=>{
   console.log(evt.data);
   authwindow.close();
   console.log(JSON.parse(localStorage.getItem("threedsecurecredential")));
+  document.querySelector("#b").innerHTML = JSON.parse(localStorage.getItem("threedsecurecredential"));
 }, false);
 
 </script>
